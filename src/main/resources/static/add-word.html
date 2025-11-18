@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить слово</title>
+</head>
+<body>
+
+<form action="/add-word" method="post">
+
+    <label>
+        English:
+        <input type="text" name="english" required>
+    </label>
+    <br>
+
+    <label>
+        Spanish:
+        <input type="text" name="spanish" required>
+    </label>
+    <br>
+
+    <label>
+        Unit:
+        <input type="number" name="unit">
+    </label>
+    <br>
+
+    <label>
+        Part of speech:
+        <input type="text" name="partOfSpeech" required>
+    </label>
+    <br>
+
+    <label>
+        Category:
+        <input type="text" name="category">
+    </label>
+    <br><br>
+
+    <button type="submit">Добавить</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Фильтр</title>
+    <link rel="stylesheet" href="/css/filter.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div th:if="${!wordExist}" class="message">
+        Слова отсутствуют
+    </div>
+
+    <div th:if="${wordExist}" class="filter-grid">
+
+        <div>
+            <h1>Категории</h1>
+            <div class="list-column" th:each="cat : ${categories}">
+                <form th:action="@{/show-cards}" method="post">
+                    <input type="hidden" name="category" th:value="${cat}">
+                    <button class="pill-button" type="submit" th:text="${cat}"></button>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <h1>Unit</h1>
+            <div class="list-column" th:each="unit : ${units}">
+                <form th:action="@{/show-cards}" method="post">
+                    <input type="hidden" name="unit" th:value="${unit}">
+                    <button class="pill-button" type="submit" th:text="${unit}"></button>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <h1>Часть речи</h1>
+            <div class="list-column" th:each="part : ${partOfSpeech}">
+                <form th:action="@{/show-cards}" method="post">
+                    <input type="hidden" name="part" th:value="${part}">
+                    <button class="pill-button" type="submit" th:text="${part}"></button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
