@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить слово</title>
+    <link rel="stylesheet" href="/css/add-word.css">
 </head>
 <body>
 
-<form action="/add-word" method="post">
+<div class="container">
+    <div class="form-content">
+        <h1 class="title">Добавить новое слово</h1>
 
-    <label>
-        English:
-        <input type="text" name="english" required>
-    </label>
-    <br>
+        <form action="/add-word" method="post" class="word-form" autocomplete="off">
 
-    <label>
-        Spanish:
-        <input type="text" name="spanish" required>
-    </label>
-    <br>
+            <div class="form-group">
+                <label for="english">English:</label>
+                <input type="text" id="english" name="english" required autocomplete="off">
+            </div>
 
-    <label>
-        Unit:
-        <input type="number" name="unit">
-    </label>
-    <br>
+            <div class="form-group">
+                <label for="spanish">Spanish:</label>
+                <input type="text" id="spanish" name="spanish" required autocomplete="off">
+            </div>
 
-    <label>
-        Part of speech:
-        <input type="text" name="partOfSpeech" required>
-    </label>
-    <br>
+            <div class="form-group">
+                <label for="unit">Unit:</label>
+                <input type="number" id="unit" name="unit" autocomplete="off">
+            </div>
 
-    <label>
-        Category:
-        <input type="text" name="category">
-    </label>
-    <br><br>
+            <div class="form-group">
+                <label for="partOfSpeech">Part of speech:</label>
+                <input type="text" id="partOfSpeech" name="partOfSpeech" required autocomplete="off">
+            </div>
 
-    <button type="submit">Добавить</button>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" autocomplete="off">
+            </div>
 
-</form>
+            <button type="submit" class="pill-button submit-button">Добавить слово</button>
+
+        </form>
+
+        <div class="button-container">
+            <form action="/main-page" method="GET">
+                <button class="pill-button back-button" type="submit">Вернуться в меню</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

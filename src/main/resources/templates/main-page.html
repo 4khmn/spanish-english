@@ -3,18 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
+<div class="container">
+    <div class="main-content">
+        <h1 class="title">Карточки слов</h1>
 
-<div th:if="${newWord}">
-    <p>Слово успешно добавлено!</p>
+        <div th:if="${newWord}" class="success-message">
+            <p>Слово успешно добавлено!</p>
+        </div>
+
+        <div class="buttons-container">
+            <button class="pill-button main-button" onclick="location.href='add-word.html'">
+                Добавить слово
+            </button>
+
+            <form action="/choose-category" method="post" class="button-form">
+                <button class="pill-button main-button" type="submit">
+                    Тренировка
+                </button>
+            </form>
+
+            <form action="/all-cards" method="get" class="button-form">
+                <button class="pill-button main-button" type="submit">
+                    Список всех слов
+                </button>
+            </form>
+
+            <button class="pill-button help-button" onclick="location.href='help.html'">
+                Как пользоваться
+            </button>
+
+        </div>
+
+    </div>
 </div>
-<button onclick="location.href='add-word.html'">Добавить слово</button>
-
-<form action="/choose-category" method="post">
-    <button type="submit">Показать карточки</button>
-</form>
-
 </body>
 </html>

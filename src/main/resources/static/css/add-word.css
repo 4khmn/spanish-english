@@ -1,0 +1,122 @@
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9f8;
+}
+
+/* Основной контейнер */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* Контент формы */
+.form-content {
+    background-color: #f0f4f0;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    min-width: 350px;
+    max-width: 450px;
+    width: 100%;
+}
+
+/* Заголовок */
+.title {
+    color: #2f4f2f;
+    text-align: center;
+    margin: 0 0 20px 0; /* Убрали верхний отступ, оставили только нижний */
+    font-size: 1.6em;
+    padding-top: 5px; /* Можно добавить маленький отступ если нужно */
+}
+
+/* Форма */
+.word-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* Группа полей */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    color: #2f4f2f;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Поля ввода */
+.form-group input {
+    padding: 10px 12px;
+    border: 2px solid #d4d4d4;
+    border-radius: 8px;
+    font-size: 0.9em;
+    background-color: white;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #6aa84f;
+    box-shadow: 0 0 4px rgba(106, 168, 79, 0.3);
+}
+
+.form-group input:required {
+    border-left: 2px solid #6aa84f;
+}
+
+/* Кнопки */
+.pill-button {
+    border: none;
+    border-radius: 20px;
+    padding: 12px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+/* Кнопка отправки */
+.submit-button {
+    background-color: #6aa84f;
+    color: white;
+    margin-top: 5px;
+}
+
+.submit-button:hover {
+    background-color: #38761d;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Кнопка возврата */
+.back-button {
+    background-color: #8e7cc3;
+    color: white;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #674ea7;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Контейнер для кнопки возврата */
+.button-container {
+    width: 100%;
+}

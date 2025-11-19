@@ -11,38 +11,53 @@
 
     <div th:if="${!wordExist}" class="message">
         Слова отсутствуют
+        <!-- Кнопка для случая когда слов нет -->
+        <div class="button-container">
+            <form action="/main-page" method="GET">
+                <button class="pill-button back-button" type="submit">Вернуться в меню</button>
+            </form>
+        </div>
     </div>
 
-    <div th:if="${wordExist}" class="filter-grid">
+    <div th:if="${wordExist}" class="filter-content">
 
-        <div>
-            <h1>Категории</h1>
-            <div class="list-column" th:each="cat : ${categories}">
-                <form th:action="@{/show-cards}" method="post">
-                    <input type="hidden" name="category" th:value="${cat}">
-                    <button class="pill-button" type="submit" th:text="${cat}"></button>
-                </form>
+        <div class="filter-grid">
+            <div>
+                <h1>Категории</h1>
+                <div class="list-column" th:each="cat : ${categories}">
+                    <form th:action="@{/show-cards}" method="post">
+                        <input type="hidden" name="category" th:value="${cat}">
+                        <button class="pill-button" type="submit" th:text="${cat}"></button>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <h1>Unit</h1>
+                <div class="list-column" th:each="unit : ${units}">
+                    <form th:action="@{/show-cards}" method="post">
+                        <input type="hidden" name="unit" th:value="${unit}">
+                        <button class="pill-button" type="submit" th:text="${unit}"></button>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <h1>Часть речи</h1>
+                <div class="list-column" th:each="part : ${partOfSpeech}">
+                    <form th:action="@{/show-cards}" method="post">
+                        <input type="hidden" name="part" th:value="${part}">
+                        <button class="pill-button" type="submit" th:text="${part}"></button>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <div>
-            <h1>Unit</h1>
-            <div class="list-column" th:each="unit : ${units}">
-                <form th:action="@{/show-cards}" method="post">
-                    <input type="hidden" name="unit" th:value="${unit}">
-                    <button class="pill-button" type="submit" th:text="${unit}"></button>
-                </form>
-            </div>
-        </div>
-
-        <div>
-            <h1>Часть речи</h1>
-            <div class="list-column" th:each="part : ${partOfSpeech}">
-                <form th:action="@{/show-cards}" method="post">
-                    <input type="hidden" name="part" th:value="${part}">
-                    <button class="pill-button" type="submit" th:text="${part}"></button>
-                </form>
-            </div>
+        <!-- Кнопка ВНУТРИ серого поля -->
+        <div class="button-container">
+            <form action="/main-page" method="GET">
+                <button class="pill-button back-button" type="submit">Вернуться в меню</button>
+            </form>
         </div>
 
     </div>

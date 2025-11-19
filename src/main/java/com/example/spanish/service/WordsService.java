@@ -4,7 +4,11 @@ import com.example.spanish.model.Word;
 import com.example.spanish.repository.WordsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
 @Service
 public class WordsService {
 
@@ -26,24 +30,38 @@ public class WordsService {
         return wordsRepository.findAllCategories();
     }
 
-    public List<String> findAllUnits(){
+    public List<Integer> findAllUnits(){
         return wordsRepository.findAllUnits();
     }
     public List<String> findAllPartOfSpeech(){
         return wordsRepository.findAllPartOfSpeech();
     }
 
-
-    public Word getRandomWordByUnit(int unit){
-        return wordsRepository.getRandomWordByUnit(unit);
+    public Word getRandomWordFromSet(Set<Integer> wordIds) {
+        if (wordIds.isEmpty()) {
+            return null;
+        }
+        List<Integer> idList = new ArrayList<>(wordIds);
+        int randomId = idList.get(new Random().nextInt(idList.size()));
+        return wordsRepository.findById(randomId).orElse(null);
     }
 
-    public Word getRandomWordByCategory(String category){
-        return wordsRepository.getRandomWordByCategory(category);
+    public Word getRandomWordByUnitExcluding(Integer unit, Set<Integer> excludedIds) {
+        List<Word> words = wordsRepository.findByUnit(unit);
+        words.removeIf(word -> excludedIds.contains(word.getId()));
+        return words.isEmpty() ? null : words.get(new Random().nextInt(words.size()));
     }
 
-    public Word getRandomWordByPartOfSpeech(String partOfSpeech){
-        return wordsRepository.getRandomWordByPartOfSpeech(partOfSpeech);
+    public Word getRandomWordByCategoryExcluding(String category, Set<Integer> excludedIds){
+        List<Word> words = wordsRepository.findByCategory(category);
+        words.removeIf(word -> excludedIds.contains(word.getId()));
+        return words.isEmpty() ? null : words.get(new Random().nextInt(words.size()));
+    }
+
+    public Word getRandomWordByPartOfSpeechExcluding(String part, Set<Integer> excludedIds) {
+        List<Word> words = wordsRepository.findByPartOfSpeech(part);
+        words.removeIf(word -> excludedIds.contains(word.getId()));
+        return words.isEmpty() ? null : words.get(new Random().nextInt(words.size()));
     }
 
 
@@ -54,5 +72,10 @@ public class WordsService {
 
     public void addWord(Word word){
         wordsRepository.save(word);
+    }
+
+
+    public List<Word> getAllCards(){
+        return (List<Word>) wordsRepository.findAll();
     }
 }

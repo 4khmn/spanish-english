@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все слова</title>
+    <link rel="stylesheet" th:href="@{/css/all-cards.css}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header-section">
+        <h1 class="title">Все слова</h1>
+        <p class="subtitle" th:text="'Всего слов: ' + ${allWords.size()}"></p>
+    </div>
+
+    <div th:if="${allWords.empty}" class="empty-message">
+        <p>Словарь пуст</p>
+    </div>
+
+    <div th:unless="${allWords.empty}" class="words-grid">
+        <div th:each="word : ${allWords}" class="word-card">
+            <div class="word-header">
+                <h3 class="english-word" th:text="${word.english}"></h3>
+                <span class="part-of-speech" th:text="${word.partOfSpeech}"></span>
+            </div>
+
+            <div class="word-translation">
+                <span class="translation" th:text="${word.spanish}"></span>
+            </div>
+
+            <div class="word-meta">
+                <div class="meta-item" th:if="${word.unit != null}">
+                    <span class="meta-label">Unit:</span>
+                    <span class="meta-value" th:text="${word.unit}"></span>
+                </div>
+                <div class="meta-item" th:if="${word.category != null and !word.category.isEmpty()}">
+                    <span class="meta-label">Category:</span>
+                    <span class="meta-value" th:text="${word.category}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <form action="/main-page" method="GET" autocomplete="off">
+            <button class="pill-button back-button" type="submit">Вернуться в меню</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
